@@ -1,0 +1,8 @@
+#!/bin/sh
+MODULENAME=$(basename $(cd $(dirname ${0}) && pwd) ) 
+MODULELOCATION=$(cd `dirname ${0}`/.. && pwd )  
+if [ -z "$(grep ${MODULENAME}_templates ${MODULELOCATION}/cds.lib)" ]; then
+    echo "Adding ${MODULENAME}_templates to $MODULELOCATION/cds.lib"
+    echo "DEFINE  ${MODULENAME}_templates \${BAG_WORK_DIR}/${MODULENAME}/${MODULENAME}_templates" >> ${MODULELOCATION}/cds.lib
+fi
+
